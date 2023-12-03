@@ -9,6 +9,6 @@ add_executable(Taller2V2 main.cpp
         minimax.h
         GameVariables.cpp
         GameVariables.h
-        Funtions.cpp
-        Funtions.h
+        Functions.cpp
+        Functions.h
 )
