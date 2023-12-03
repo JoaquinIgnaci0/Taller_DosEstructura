@@ -1,9 +1,9 @@
 # Connect Four Game
 
 ## Descripción
--Este programa implementa el juego Connect Four (Cuatro en línea) en la consola. Los jugadores pueden enfrentarse entre sí o jugar contra una inteligencia artificial que utiliza el algoritmo Minimax.
+- Este programa implementa el juego Connect Four (Cuatro en línea) en la consola. Los jugadores pueden enfrentarse entre sí o jugar contra una inteligencia artificial que utiliza el algoritmo Minimax.
 
-El menú principal te permite seleccionar diferentes opciones, como jugar contra la CPU, jugar contra otro jugador, ver las puntuaciones, etc.
+- El menú principal te permite seleccionar diferentes opciones, como jugar contra la CPU, jugar contra otro jugador, ver las puntuaciones, etc.
 ## Compilado 
 - Realice el programa utilizando el entorno de CLion pero al tratar de ejecutarlo en otro entorno como visual estoy teniendo problemas, estoy tratando de utilizar un codespace pero tampoco me ejecuta el codigo de buena manera
 - 
