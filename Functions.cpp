@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Funtions.h"
+#include "Functions.h"
 #include "GameVariables.h"
 
 void newGame(char board[ROWS][COLUMNS]){
