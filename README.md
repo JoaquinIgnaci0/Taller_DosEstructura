@@ -9,8 +9,8 @@
 - Estoy tratando de resolver el problema, pero aun no se cual es el error.
 ## Decisiones de Diseño
 ### Estructura del Código
-- `Funtions.h`: Contiene las declaraciones de funciones y las definiciones de variables globales.
-- `Funtions.cpp`: Implementaciones de las funciones del juego.
+- `Functions.h`: Contiene las declaraciones de funciones y las definiciones de variables globales.
+- `Functions.cpp`: Implementaciones de las funciones del juego.
 - `GameVariables.h`: Define las variables y constantes del juego.
 - `main.cpp`: Punto de entrada del programa.
 - `PrintBoard`: Función para imprimir el tablero.
