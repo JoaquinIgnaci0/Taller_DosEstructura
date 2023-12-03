@@ -4,7 +4,7 @@
 #include <limits>
 #include <ctime>
 #include <iostream>
-#include "../Taller2V2/GameVariables.h"
+#include "GameVariables.h"
 #include "minimax.h"
 
 void copyBoard(char board1 [ROWS][COLUMNS],char board2[ROWS][COLUMNS]){
