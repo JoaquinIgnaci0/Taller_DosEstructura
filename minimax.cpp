@@ -85,21 +85,7 @@ void deleteTree(Nodo *root){
     }
     return;
 }
-void PrintTree(Nodo *root){
-    char * tab = "";
-    if(root -> level != 0){
-        tab = (char *) malloc((2*root->level+1)*sizeof(char));
-        for(int j = 0;j<2*root->level;j++)tab[j] = ' ';
-        tab[2*root->level] = '\0';
-    }
-    if (root->num_children == 0) printf("%sNodo (valor %lf)\n",tab,root->worth);
-    else{
-        int i;
-        printf("%sNodo (valor %lf)\n",tab,root->worth);
-        for (i=0;i<root->num_children;i++) PrintTree(root->childrens[i]);
-    }
-    free(tab);
-}
+
 void EvaluateLeaves(Nodo *root){
     if(root->num_children == 0){
         root->worth = Heuristic(root->board);
