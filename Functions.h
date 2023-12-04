@@ -1,5 +1,7 @@
 #include "GameVariables.h"
 #include "minimax.h"
+#include <string>
+using namespace std;
 
 void newGame(char [ROWS][COLUMNS]);
 int PlayCPU(char [ROWS][COLUMNS],int,char);
@@ -10,5 +12,5 @@ void ScreenScore();
 void PlayWithCPU();
 void PlayerVsPlayer();
 void CopyName(char *, char *);
-void SeeScores(char [30][10],int [30]);
+void SeeScores(std::string player[30], int points[30]);
 void NewScore(int ,int );
