@@ -5,8 +5,8 @@
 
 - El menú principal te permite seleccionar diferentes opciones, como jugar contra la CPU, jugar contra otro jugador, ver las puntuaciones, etc.
 ## Compilado 
-- Realice el programa utilizando el entorno de CLion pero al tratar de ejecutarlo en otro entorno como visual estoy teniendo problemas, estoy tratando de utilizar un codespace pero tampoco me ejecuta el codigo de buena manera.
-- Estoy tratando de resolver el problema, pero aun no se cual es el error.
+- El taller ya compilado se encuentra en codespace solo hace falta poner en la terminal ./main para ejecutarlo
+- Pero si es el caso de no estar compilado recomiendo usar el siguiente comando g++ main.cpp Functions.cpp GameVariables.cpp minimax.cpp -o main
 ## Decisiones de Diseño
 ### Estructura del Código
 - `Functions.h`: Contiene las declaraciones de funciones y las definiciones de variables globales.
