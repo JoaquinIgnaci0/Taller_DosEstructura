@@ -1,6 +1,9 @@
 #include <iostream>
+#include <iomanip>
+#include <fstream>
 #include "Functions.h"
 #include "GameVariables.h"
+using namespace std;
 
 void newGame(char board[ROWS][COLUMNS]){
     for(int i = 0;i<ROWS;i++){
@@ -110,24 +113,27 @@ void SelectDifficulty(int *difficulty) {
     }
 }
 
-void ScreenScore(){
-    char player[30][10];
+void ScreenScore() {
+    std::string player[30];
     int points[30];
-    SeeScores(player,points);
-    printf("--------------------- HIGHSCORES -----------------\n");
-    printf("\n    FACIL     |     NORMAL     |     DIFICIL      \n");
-    printf("--------------------------------------------------\n");
-    for(int i = 0;i<10;i++){
-        printf(" %-10s %3d | %-10s %3d | %-10s %3d\n",player[i],points[i],player[10+i],points[10+i],player[20+i],points[20+i]);
-    }
+    SeeScores(player, points); // Asumiendo que SeeScores está definida en algún lugar
 
+    std::cout << "--------------------- HIGHSCORES -----------------\n";
+    std::cout << "\n    FACIL     |     NORMAL     |     DIFICIL      \n";
+    std::cout << "--------------------------------------------------\n";
+
+    for (int i = 0; i < 10; i++) {
+        std::cout << " " << std::setw(10) << player[i] << " " << std::setw(3) << points[i] << " | "
+                  << std::setw(10) << player[10 + i] << " " << std::setw(3) << points[10 + i] << " | "
+                  << std::setw(10) << player[20 + i] << " " << std::setw(3) << points[20 + i] << "\n";
+    }
 }
 void PlayWithCPU(){
     char board[ROWS][COLUMNS];int difficulty;
     newGame(board);
     SelectDifficulty(&difficulty);
-    char player[30][10];int points[30];
-    SeeScores(player, points);
+    std::string player[30];int points[30];
+    void SeeScores(std::string player[30], int points[30]);
 
     int MIN_RECORD = points[(3 - difficulty) * 10 - 1];
     int cont_plays = 1;
@@ -208,37 +214,52 @@ void CopyName(char *dest, char *source){
     dest[i] = '\0';
 }
 
-void SeeScores(char player[30][10],int points[30]){
-    FILE *HIGHSCORES = fopen("highscores.txt","r+");
-    for (int i=0;i<30;i++) fscanf(HIGHSCORES,"%s %d",player[i],points+i);
-    fclose(HIGHSCORES);
+void SeeScores(std::string player[30], int points[30]) {
+    std::ifstream highscoresFile("/workspaces/Taller_DosEstructura/cmake-build-debug/highscores.txt", std::ios::in);
+
+    if (highscoresFile.is_open()) {
+        for (int i = 0; i < 30; i++) {
+            highscoresFile >> player[i] >> points[i];
+        }
+        highscoresFile.close();
+    } else {
+        std::cerr << "Error al abrir el archivo de highscores." << std::endl;
+    }
 }
 void NewScore(int playerPoints ,int difficulty){
-    printf("\n\n********************* NUEVO RECORD!!! *********************\n");
-    char player[30][10];
-    int points[30];
-    SeeScores(player,points);
+    std::cout << "\n\n********************* NUEVO RECORD!!! *********************\n";
 
-    int pos = (3-difficulty)*10-1;
-    while (playerPoints<points[pos]){
+    std::string player[30];
+    int points[30];
+    SeeScores(player, points);
+
+    int pos = (3 - difficulty) * 10 - 1;
+    while (playerPoints < points[pos]) {
         pos--;
     }
-    char playerName[10];
-    printf("Introduce tu nombre (maximo 10 caracteres): "); scanf("%s",&playerName);
 
-    for(int i=(3-difficulty)*10-1;i>(3-difficulty-1)*10;i--){
-        if(playerPoints < points[i-1]){
-            CopyName(player[i],player[i-1]);
-            points[i] = points[i-1];
-            CopyName(player[i-1],playerName);
-            points[i-1] = playerPoints;
+    std::string playerName;
+    std::cout << "Introduce tu nombre (máximo 10 caracteres): ";
+    std::cin >> playerName;
+
+    for (int i = (3 - difficulty) * 10 - 1; i > (3 - difficulty - 1) * 10; i--) {
+        if (playerPoints < points[i - 1]) {
+            player[i] = player[i - 1];
+            points[i] = points[i - 1];
+            player[i - 1] = playerName;
+            points[i - 1] = playerPoints;
+        } else {
+            break;
         }
-        else break;
     }
 
-    FILE *NEWHIGHSCORES = fopen("highscores.txt","w+");
-    for (int i=0;i<30;i++){
-        fprintf(NEWHIGHSCORES,"%s %d\n",player[i],points[i]);
+    std::ofstream newHighscoresFile("/workspaces/Taller_DosEstructura/cmake-build-debug/highscores.txt", std::ios::out);
+    if (newHighscoresFile.is_open()) {
+        for (int i = 0; i < 30; i++) {
+            newHighscoresFile << std::setw(10) << player[i] << " " << points[i] << "\n";
+        }
+        newHighscoresFile.close();
+    } else {
+        std::cerr << "Error al abrir el archivo de highscores." << std::endl;
     }
-    fclose(NEWHIGHSCORES);
 }
