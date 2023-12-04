@@ -14,7 +14,6 @@ void createLevel(Nodo *,char,int);
 void createDoubleLevel(Nodo *,int);
 void createTree(Nodo *,int,int);
 void deleteTree(Nodo *);
-void PrintTree(Nodo *);
 void EvaluateLeaves(Nodo *);
 void MiniMax(Nodo *);
 void MiniMaxPoda(Nodo *,double,double);
